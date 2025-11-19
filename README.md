@@ -1,3 +1,6 @@
+![Liar’s Deck – Bayesian Bluff Detection Engine](assets/icon.png)
+
+
 # Liar’s Deck – Bayesian Bluff Detection Engine
 
 This repository contains a **probabilistic decision engine** for the *Liar’s Deck* mode.
