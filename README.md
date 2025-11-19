@@ -1,4 +1,4 @@
-# Liar’s Deck – Bayesian Bluff Detection Engine
+# Liar’s Deck – Markov/Bayesian Bluff Detection Engine
 
 This repository contains a **probabilistic decision engine** for the *Liar’s Deck* mode.
 It is **not purely mathematical**: it combines
