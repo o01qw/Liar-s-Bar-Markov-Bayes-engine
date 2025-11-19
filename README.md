@@ -297,9 +297,12 @@ Let:
 
 Then the expected value of calling is:
 
+Let $g_{\text{correct}}$ be the gain if your call is correct,
+and $\ell_{\text{wrong}}$ be the loss if your call is wrong.
+
 $$
-EV(\text{call}) = p_B \cdot \text{gain\_if\_correct}
-                  - p_T \cdot \text{loss\_if\_wrong}
+EV(\mathrm{call}) = p_B \cdot g_{\text{correct}}
+                    - p_T \cdot \ell_{\text{wrong}}
 $$
 
 We recommend calling if
