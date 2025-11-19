@@ -1,6 +1,3 @@
-![Liar’s Deck – Bayesian Bluff Detection Engine](assets/icon.png)
-
-
 # Liar’s Deck – Bayesian Bluff Detection Engine
 
 This repository contains a **probabilistic decision engine** for the *Liar’s Deck* mode.
@@ -17,6 +14,7 @@ to tell you, for each opponent claim:
 - the **expected value (EV)** of calling “Liar!” given your risk preferences.
 
 ---
+![Liar’s Deck – Bayesian Bluff Detection Engine](assets/icon.png)
 
 ## 1. Background and Sources
 
