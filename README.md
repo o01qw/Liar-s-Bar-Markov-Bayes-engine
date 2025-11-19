@@ -13,8 +13,6 @@ to tell you, for each opponent claim:
 - the **posterior probability** that the opponent is bluffing vs telling the truth;  
 - the **expected value (EV)** of calling “Liar!” given your risk preferences.
 
-It also exposes a small **CLI tool** so you can drive the model by hand while playing.
-
 ---
 
 ## 1. Background and Sources
