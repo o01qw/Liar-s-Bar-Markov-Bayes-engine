@@ -16,7 +16,7 @@ to tell you, for each opponent claim:
 ---
 ![Liar’s Deck – Bayesian Bluff Detection Engine](assets/icon.png)
 
-## 1. Background and Sources
+## 1. Background
 
 This model combines three components:
 
@@ -60,10 +60,6 @@ The core file is:
 
 - `liar.py` – everything (deck model, bluff model, EV logic, CLI) lives here.
 
-### Python version
-
-- Python **3.10+** recommended (for type hints like `list[int]` etc.).
-
 ### Dependencies
 
 The main script uses **only the standard library**:
@@ -71,13 +67,6 @@ The main script uses **only the standard library**:
 - `dataclasses`
 - `math` (for `comb`)
 - `typing` (for `Callable`, `Optional`)
-
-No external packages are needed to run the CLI or use the basic API.
-
-For your own analysis of behavioural data you may additionally want:
-
-- `pyreadstat` – to read `final_data_supplementary.sav` from Palomäki et al.
-- `scikit-learn` – to fit a logistic regression $P(\text{bluff} \mid p_{\text{feasible}})$.
 
 ---
 
