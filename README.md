@@ -49,8 +49,7 @@ This model combines three components:
    calculation to produce
 
    $$
-   P(\mathrm{truth}\mid\mathrm{claim}),\quad
-   P(\mathrm{bluff}\mid\mathrm{claim})
+   P(\mathrm{truth}\mid\mathrm{claim}),\quad P(\mathrm{bluff}\mid\mathrm{claim})
    $$
 
    then map that into an **expected value** for calling “Liar!” given asymmetric
