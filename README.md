@@ -49,7 +49,7 @@ This model combines three components:
    calculation to produce
 
    $$
-   P(\text{truth} \mid \text{claim}), \quad P(\text{bluff} \mid \text{claim}),
+   P(\text{truth} \mid \text{claim}),\quad P(\text{bluff} \mid \text{claim})
    $$
 
    then map that into an **expected value** for calling “Liar!” given asymmetric
@@ -325,11 +325,9 @@ This is implemented by `call_liar_ev` and `should_call_liar`.
 
 ## 7. Citation
 
-If you write about this model, you may want to cite:
-
 - Palomäki, J., Yan, J, Modic, D., & Laakasuo, M. (2016).  
   *To Bluff like a Man or Fold like a Girl? Gender Biased Deceptive Behaviour
   in Online Poker.* PLOS ONE, 11(7), e0157838.
+  
+- CS224R Project Report (2025). *Bluff and Learn: Comparing CFR and NFSP in Liar Bar.* Stanford University, Department of Computer Science.
 
-- (Optional) your own working paper / report describing how this engine is used
-  in Liar’s Deck / Liar’s Bar experiments.
