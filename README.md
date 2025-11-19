@@ -1,6 +1,6 @@
 # Liar’s Deck – Bayesian Bluff Detection Engine
 
-This repository contains a **probabilistic decision engine** for the *Liar’s Deck* / *Liar’s Bar* minigame.  
+This repository contains a **probabilistic decision engine** for the *Liar’s Deck* mode.
 It is **not purely mathematical**: it combines
 
 - exact **card combinatorics** (hypergeometric distribution), and  
