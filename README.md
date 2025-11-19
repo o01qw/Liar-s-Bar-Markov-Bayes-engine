@@ -40,14 +40,14 @@ This model combines three components:
    Their data show that bluff frequency is not constant; it depends on context
    and perceived plausibility.
 
-   In this basic version, we approximate that with a simple **piecewise prior**
+   In this basic version, I approximate that with a simple **piecewise prior**
    $p_b(p_f)$ mapping feasibility $p_f$ → bluff rate.  
    In more advanced work (outside this file), you can fit a **logistic regression**
    from their `final_data_supplementary.sav` dataset and plug it in as a learned prior.
 
 3. **Bayesian decision layer + EV rule.**
 
-   We combine card-feasibility and bluff prior via a simple Bayesian-style
+   I combine card-feasibility and bluff prior via a simple Bayesian-style
    calculation to produce
 
    $$
@@ -166,7 +166,7 @@ Interpretation:
   of implausibility.
 
 - **Posterior P(truth | claim) = 0.3607**  
-  After combining the two stories (truthful-but-feasible vs bluff), we estimate
+  After combining the two stories (truthful-but-feasible vs bluff), I estimate
   a 36.07% chance the claim is true and 63.93% chance it’s a bluff.
 
 - **EV(call) = -0.0820**  
@@ -179,70 +179,7 @@ actually revealed; the deck and hand counts are updated for the next turn.
 
 ---
 
-## 4. Programmatic API
-
-You can also import and use the model from other Python code:
-
-```python
-from liar import (
-    DeckConfig,
-    CardBeliefState,
-    LiarDeckAgent,
-    bluff_rate_from_feasibility,
-    posterior_truth_probability,
-    call_liar_ev,
-    should_call_liar,
-)
-
-# 1. Deck and belief state
-deck_cfg = DeckConfig()
-state = CardBeliefState(
-    deck_cfg=deck_cfg,
-    table_rank="K",          # 'K', 'Q', or 'A'
-    my_hand_size=5,
-    my_target_cards=2,
-    revealed_target_cards=1,
-    revealed_non_target_cards=0,
-)
-
-# 2. Compute feasibility of an opponent's claim
-p_feasible = state.prob_opponent_can_be_truthful(
-    opp_hand_size=4,
-    claimed_target_cards=3,
-)
-
-# 3. Behavioural bluff prior
-p_bluff_prior = bluff_rate_from_feasibility(p_feasible)
-
-# 4. Posterior truth probability
-p_truth = posterior_truth_probability(p_feasible, p_bluff_prior)
-
-# 5. EV and decision
-ev_call = call_liar_ev(p_truth, gain_if_correct=1.0, loss_if_wrong=2.0)
-should_call = should_call_liar(p_truth, gain_if_correct=1.0, loss_if_wrong=2.0)
-
-print(p_feasible, p_bluff_prior, p_truth, ev_call, should_call)
-```
-
-Or use the **agent wrapper**:
-
-```python
-agent = LiarDeckAgent(
-    state=state,
-    gain_if_correct=1.0,
-    loss_if_wrong=2.0,
-)
-
-opp_hand_size = 4
-claimed_target_cards = 3
-
-p_truth = agent.posterior_truth_for_claim(opp_hand_size, claimed_target_cards)
-call = agent.decide_on_claim(opp_hand_size, claimed_target_cards)
-```
-
----
-
-## 5. Mathematics (with KaTeX-style formulas)
+## 5. Mathematics
 
 ### 5.1 Card-feasibility (hypergeometric distribution)
 
@@ -252,7 +189,7 @@ Let:
 - $T_{\text{rem}}$ = number of **target cards** among those unknown  
 - an opponent holds $h$ cards and claims to play $c$ target cards this turn
 
-We assume their hand is a random draw from the unknown cards. Let $X$ be the
+I assume their hand is a random draw from the unknown cards. Let $X$ be the
 number of target cards in the opponent’s hand:
 
 $$
@@ -278,7 +215,7 @@ Let:
 
 - $p_f = P(\text{feasible})$ (the hypergeometric result).
 
-We define a behavioural prior
+I define a behavioural prior
 
 $$
 p_b = P(\text{bluff} \mid p_f),
@@ -317,12 +254,12 @@ fitted on observed bluffs vs non-bluffs.
 
 ### 5.3 Posterior truth / bluff probability
 
-We consider two hypotheses:
+I consider two hypotheses:
 
 - $\mathsf{T}$ = “the player is truthful and the deck allows the claim”;  
 - $\mathsf{B}$ = “the player is bluffing”.
 
-We approximate:
+I approximate:
 
 $$
 P(\text{truth} \cap \text{feasible}) = p_f \cdot (1 - p_b),
@@ -383,15 +320,8 @@ This is implemented by `call_liar_ev` and `should_call_liar`.
 - Behaviour is modelled via a **single average bluff prior**, not
   player-specific styles.
 - The Bayesian model is intentionally simple; it does not fully model the
-  temporal game dynamics or multi-round signalling of Liar’s Bar.
+  temporal game dynamics or multi-round signalling of Liar’s Bar as at now.
 - The EV rule is **myopic** (one-step) and does not consider future rounds.
-
-Despite these simplifications, the engine is useful as:
-
-- an **interpretable mathematical + behavioural baseline** for bluff detection;
-- a **feature generator** (feasibility, posterior, EV) for RL agents;
-- a tool to build intuition about how deck structure and human bluff
-  tendencies interact.
 
 ---
 
