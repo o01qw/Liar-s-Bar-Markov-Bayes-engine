@@ -51,12 +51,7 @@ This model combines three components:
    $P(\mathrm{bluff}\mid\mathrm{claim})$, then map that into an **expected value**
    for calling “Liar!” given asymmetric penalties (being wrong usually hurts
    more than being right helps).
-
-This is meant to be a **transparent, interpretable baseline** that can be used:
-
-- as a standalone “math + behaviour coach” while playing; or
-- as a belief module inside more complex RL agents (e.g. NFSP, CFR) for Liar’s Bar.
-
+   
 ---
 
 ## 2. Installation and Requirements
