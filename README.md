@@ -46,14 +46,10 @@ This model combines three components:
 3. **Bayesian decision layer + EV rule.**
 
    I combine card-feasibility and bluff prior via a simple Bayesian-style
-   calculation to produce
-
-   $$
-   P(\mathrm{truth}\mid\mathrm{claim}),\quad P(\mathrm{bluff}\mid\mathrm{claim})
-   $$
-
-   then map that into an **expected value** for calling “Liar!” given asymmetric
-   penalties (being wrong usually hurts more than being right helps).
+   calculation to produce $P(\mathrm{truth}\mid\mathrm{claim})$ and
+   $P(\mathrm{bluff}\mid\mathrm{claim})$, then map that into an **expected value**
+   for calling “Liar!” given asymmetric penalties (being wrong usually hurts
+   more than being right helps).
 
 This is meant to be a **transparent, interpretable baseline** that can be used:
 
