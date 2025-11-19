@@ -298,7 +298,7 @@ Then the expected value of calling is:
 
 $$
 EV(\text{call}) = p_B \cdot \text{gain\_if\_correct}
-                 - p_T \cdot \text{loss\_if\_wrong}.
+                  - p_T \cdot \text{loss\_if\_wrong}
 $$
 
 We recommend calling if
